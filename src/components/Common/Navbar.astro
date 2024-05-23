@@ -119,13 +119,13 @@ const links = [
         >
           {
             links.map((l) => (
-              <a class="hover:text-gray-500" class="p-3" href={l.link}>
+              <a class="hover:text-black" href={l.link}>
                 {l.name}
               </a>
             ))
           }
           <a
-            class="py-2 px-4 rounded-r-sm bg-amber-500 hover:bg-amber-600 text-white ease-in duration-100"
+            class="py-2 px-4 rounded-r-sm bg-primary hover:bg-primary-hover text-white ease-in duration-100"
             href={WebsiteConfig.DEVFEST_EVENT_LINK}>GET TICKET</a
           >
         </div>
@@ -144,8 +144,7 @@ const links = [
         </a>
 
         <div class="my-4 pl-3 flex flex-col">
-          <p class="text-2xl font-medium">2nd December 2023</p>
-          <p>Polytechnic of Bari</p>
+          <p class="text-2xl font-medium">Fall 2024, Bari</p>
         </div>
 
         <div class="flex flex-col items-stretch">
@@ -158,7 +157,7 @@ const links = [
           }
         </div>
         <a
-          class="mt-auto text-center p-3 bg-amber-500 hover:bg-amber-600 text-white ease-in duration-100"
+          class="mt-auto text-center p-3 bg-primary hover:bg-primary-hover text-white ease-in duration-100"
           href={WebsiteConfig.DEVFEST_EVENT_LINK}>GET TICKET</a
         >
       </div>
@@ -219,7 +218,6 @@ const links = [
     };
 
     w.navSetWhiteBg = () => {
-      navLinks?.classList.remove("text-white");
       nav?.classList.remove("bg-trasparent");
       nav?.classList.add("bg-white");
       nav?.classList.add("shadow-md");
@@ -232,8 +230,6 @@ const links = [
       } else {
         navLogo?.setAttribute("src", DEVFEST_LOGO_LIGHT);
         nav?.classList.add("bg-trasparent");
-        navLinks?.classList.add("text-white");
-
         nav?.classList.remove("bg-white");
         nav?.classList.remove("shadow-md");
       }

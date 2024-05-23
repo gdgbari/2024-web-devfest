@@ -18,6 +18,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary': '#0077B6',
+        'primary-hover': '#035b8a',
+        'khaki':'#ab9d8d',
+      },
       spacing: {
         128: "32rem",
       },
