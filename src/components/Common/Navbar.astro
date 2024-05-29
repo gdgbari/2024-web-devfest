@@ -13,14 +13,9 @@ const initialClasses = transparentMode ? "bg-trasparent" : "bg-white shadow-md";
 
 const links = [
   { link: "/", name: "Home" },
-  { link: "/schedule", name: "Schedule" },
-  { link: "/sessions", name: "Sessions" },
-  { link: "/speakers", name: "Speakers" },
-  { link: "/location", name: "Location" },
-  { link: "/faq", name: "Faq" },
-  { link: "/team", name: "Team" },
-  { link: "/contest", name: "Contest" },
-
+  { link: "#speaker", name: "Call For Speaker" },
+  { link: "#sponsor", name: "Sponsorship" },
+  { link: "#partner", name: "Partnership" },
 ];
 ---
 
@@ -115,7 +110,7 @@ const links = [
       >
         <div
           id="navMenuLinks"
-          class="flex md:flex-row flex-col md:items-center lg:gap-5 gap-[0.85rem] items-stretch"
+          class="flex md:flex-row flex-col md:items-center lg:gap-5 gap-6 items-stretch"
         >
           {
             links.map((l) => (
@@ -124,10 +119,7 @@ const links = [
               </a>
             ))
           }
-          <a
-            class="py-2 px-4 rounded-r-sm bg-primary hover:bg-primary-hover text-white ease-in duration-100"
-            href={WebsiteConfig.DEVFEST_EVENT_LINK}>GET TICKET</a
-          >
+         
         </div>
       </div>
     </div>
@@ -156,10 +148,7 @@ const links = [
             ))
           }
         </div>
-        <a
-          class="mt-auto text-center p-3 bg-primary hover:bg-primary-hover text-white ease-in duration-100"
-          href={WebsiteConfig.DEVFEST_EVENT_LINK}>GET TICKET</a
-        >
+       
       </div>
     </div>
   </nav>

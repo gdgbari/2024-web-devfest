@@ -28,6 +28,7 @@ const speakersCollection = defineCollection({
 const externalsCollection = defineCollection({
     type: 'content', // v2.5.0 and later
     schema: z.object({
+    
         name: z.string(),
         type: z.enum(['sponsor_main', 'sponsor_platinum', 'sponsor_gold', 'sponsor_silver','sponsor_bronze', 'partner',]),
         url: z.string(),
@@ -60,6 +61,22 @@ const staffCollection = defineCollection({
     }),
 });
 
+const testimonals = defineCollection({
+    type: 'content', // v2.5.0 and later
+    schema: z.object({
+        name: z.string(),
+    }),
+});
+
+const callToActions = defineCollection({
+    type: 'content', // v2.5.0 and later
+    schema: z.object({
+        order: z.number(),
+        title: z.string(),
+        url: z.string(),
+        buttonText: z.string(),
+    }),
+});
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
@@ -67,5 +84,7 @@ export const collections = {
     'speakers': speakersCollection,
     'externals': externalsCollection,
     'staff': staffCollection,
+    'testimonals': testimonals,
+    'call_to_actions': callToActions,
 };
 

@@ -184,7 +184,30 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"externals": {
+		"call_to_actions": {
+"partner.md": {
+	id: "partner.md";
+  slug: "partner";
+  body: string;
+  collection: "call_to_actions";
+  data: InferEntrySchema<"call_to_actions">
+} & { render(): Render[".md"] };
+"speaker.md": {
+	id: "speaker.md";
+  slug: "speaker";
+  body: string;
+  collection: "call_to_actions";
+  data: InferEntrySchema<"call_to_actions">
+} & { render(): Render[".md"] };
+"sponsor.md": {
+	id: "sponsor.md";
+  slug: "sponsor";
+  body: string;
+  collection: "call_to_actions";
+  data: InferEntrySchema<"call_to_actions">
+} & { render(): Render[".md"] };
+};
+"externals": {
 "ass_coach.md": {
 	id: "ass_coach.md";
   slug: "ass_coach";
@@ -330,6 +353,29 @@ declare module 'astro:content' {
   body: string;
   collection: "staff";
   data: InferEntrySchema<"staff">
+} & { render(): Render[".md"] };
+};
+"testimonials": {
+"emilia.md": {
+	id: "emilia.md";
+  slug: "emilia";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"raffaele.md": {
+	id: "raffaele.md";
+  slug: "raffaele";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"vito.md": {
+	id: "vito.md";
+  slug: "vito";
+  body: string;
+  collection: "testimonials";
+  data: any
 } & { render(): Render[".md"] };
 };
 
