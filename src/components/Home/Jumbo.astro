@@ -1,9 +1,10 @@
 ---
-import { WebsiteConfig } from "../../config";
+import backgroundImage from "../../assets/images/bari.webp";
+import {Image} from "astro:assets";
 ---
 
 <div class="text-black jumbo h-screen flex flex-col">
-  <img class="object-cover h-full" src="/assets/images/bari.webp" alt="" />
+  <Image class="object-cover h-full" src={backgroundImage} alt="" />
   <div
     class="bg-khaki/50 flex flex-col justify-center content-center absolute top-0 left-0 right-0 h-screen"
   >

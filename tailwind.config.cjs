@@ -19,8 +19,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#0077B6',
-        'primary-hover': '#035b8a',
+        'primary': '#4285f4',
+        'primary-hover': '#376ec6',
         'khaki':'#ab9d8d',
       },
       spacing: {
