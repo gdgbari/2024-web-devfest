@@ -1,6 +1,6 @@
 ---
 import backgroundImage from "../../assets/images/bari.webp";
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 ---
 
 <div class="text-black jumbo h-screen flex flex-col">
@@ -9,13 +9,13 @@ import {Image} from "astro:assets";
     class="bg-khaki/50 flex flex-col justify-center content-center absolute top-0 left-0 right-0 h-screen"
   >
     <div class="p-10 text-center">
-      <h1 class="text-6xl font-medium mb-4">Devfest Bari 2024</h1>
-      <p class="text-3xl">Autunno 2024, Bari</p>
+      <slot name="title" />
+      <slot name="date-venue" />
+      
       <div class="mt-8 flex gap-4 justify-center flex-col md:flex-row">
-        <a
-          class="mt-auto text-center py-3 px-8 bg-primary hover:bg-primary-hover text-white ease-in duration-100"
-          href="#speaker"}>Call For Speaker</a
-        >
+        <slot name="cta" />
+
+        
       </div>
     </div>
   </div>
