@@ -6,76 +6,34 @@ const { DEVFEST_NAME } = WebsiteConfig;
 
 interface Props {
   transparentMode?: boolean;
+  currentLocale: string;
 }
 
-const { transparentMode = false } = Astro.props;
+const { transparentMode = false, currentLocale } = Astro.props;
 
-const initialClasses = transparentMode ? "bg-trasparent" : "bg-white shadow-md";
+const localeRouting = {
+  en: "it",
+  it: "en",
+};
 
 const links = [
   { link: "/", name: "Home" },
   { link: "#speaker", name: "Call For Speaker" },
   { link: "#sponsor", name: "Sponsorship" },
   { link: "#partner", name: "Partnership" },
+  ...Object.keys(localeRouting).filter((l) => l == currentLocale ) .map((l) => ({
+    link: `/${localeRouting[l]}`,
+    name: localeRouting[l].toUpperCase(),
+  })),
 ];
+
+
 ---
-
-<style>
-  .menu-icon {
-    transform: scale(-1.5, 1.5);
-    position: relative;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
-
-  .menu-icon .menu-icon__cheeckbox {
-    display: block;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 2;
-    -webkit-touch-callout: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    opacity: 0;
-  }
-
-  .menu-icon div {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 22px;
-    height: 12px;
-  }
-
-  .menu-icon span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 2px;
-    border-radius: 1px;
-    background: rgba(0, 0, 0, 0.9);
-    transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
-  }
-
-  .menu-icon span:first-of-type {
-    top: 0;
-  }
-
-  .menu-icon span:last-of-type {
-    bottom: 1px;
-  }
-</style>
 <header>
   <nav
     class={`${
       transparentMode ? "transparent-mode" : ""
-    } flex flex-row justify-between items-center p-4 top-0 left-0 right-0 fixed z-30 ${initialClasses} ease-in duration-150`}
+    } flex flex-row justify-between items-center p-4 top-0 left-0 right-0 fixed z-30 bg-white shadow-md ease-in duration-150`}
   >
     <div class="flex justify-between max-w-6xl lg:w-4/5 w-full m-auto">
       <div class="flex gap-4">
@@ -152,10 +110,6 @@ const links = [
   </nav>
 
   <script>
-    import { WebsiteConfig } from "../../config";
-
-    const navLogo = document.querySelector(".nav-logo");
-    const navLinks = document.querySelector("#navMenuLinks");
     const navMobileMenu = document.querySelector("#navMobileMenu");
     const navMobileMenuContainer = document.querySelector(
       "#navMobileMenu .absolute",
@@ -190,31 +144,6 @@ const links = [
       setTimeout(() => {
         navMobileMenu?.classList.add("pointer-events-none");
       }, 110);
-    }
-
-    w.resetNavbar = () => {
-      window.removeEventListener("scroll", checkNav);
-    };
-
-    w.intitializeNav = () => {
-      window.addEventListener("scroll", checkNav);
-      checkNav();
-    };
-
-    w.navSetWhiteBg = () => {
-      nav?.classList.remove("bg-trasparent");
-      nav?.classList.add("bg-white");
-      nav?.classList.add("shadow-md");
-    };
-
-    function checkNav() {
-      if (window.scrollY > 100) {
-        w.navSetWhiteBg();
-      } else {
-        nav?.classList.add("bg-trasparent");
-        nav?.classList.remove("bg-white");
-        nav?.classList.remove("shadow-md");
-      }
     }
 
     window.addEventListener("resize", (e) => {
