@@ -184,28 +184,53 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"call_to_actions": {
-"partner.md": {
-	id: "partner.md";
-  slug: "partner";
+		"call_to_actions copy": {
+};
+"call_to_actions": {
+"en/partner.md": {
+	id: "en/partner.md";
+  slug: "en/partner";
   body: string;
   collection: "call_to_actions";
-  data: InferEntrySchema<"call_to_actions">
+  data: any
 } & { render(): Render[".md"] };
-"speaker.md": {
-	id: "speaker.md";
-  slug: "speaker";
+"en/speaker.md": {
+	id: "en/speaker.md";
+  slug: "en/speaker";
   body: string;
   collection: "call_to_actions";
-  data: InferEntrySchema<"call_to_actions">
+  data: any
 } & { render(): Render[".md"] };
-"sponsor.md": {
-	id: "sponsor.md";
-  slug: "sponsor";
+"en/sponsor.md": {
+	id: "en/sponsor.md";
+  slug: "en/sponsor";
   body: string;
   collection: "call_to_actions";
-  data: InferEntrySchema<"call_to_actions">
+  data: any
 } & { render(): Render[".md"] };
+"it/partner.md": {
+	id: "it/partner.md";
+  slug: "it/partner";
+  body: string;
+  collection: "call_to_actions";
+  data: any
+} & { render(): Render[".md"] };
+"it/speaker.md": {
+	id: "it/speaker.md";
+  slug: "it/speaker";
+  body: string;
+  collection: "call_to_actions";
+  data: any
+} & { render(): Render[".md"] };
+"it/sponsor.md": {
+	id: "it/sponsor.md";
+  slug: "it/sponsor";
+  body: string;
+  collection: "call_to_actions";
+  data: any
+} & { render(): Render[".md"] };
+};
+"en": {
 };
 "externals": {
 "ass_coach.md": {
@@ -213,71 +238,73 @@ declare module 'astro:content' {
   slug: "ass_coach";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "aup.md": {
 	id: "aup.md";
   slug: "aup";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "codemotion.md": {
 	id: "codemotion.md";
   slug: "codemotion";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "e80.md": {
 	id: "e80.md";
   slug: "e80";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "google.md": {
 	id: "google.md";
   slug: "google";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "jeba.md": {
 	id: "jeba.md";
   slug: "jeba";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "link.md": {
 	id: "link.md";
   slug: "link";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "nextome.md": {
 	id: "nextome.md";
   slug: "nextome";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "wib_puglia.md": {
 	id: "wib_puglia.md";
   slug: "wib_puglia";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
 "wideverse.md": {
 	id: "wideverse.md";
   slug: "wideverse";
   body: string;
   collection: "externals";
-  data: InferEntrySchema<"externals">
+  data: any
 } & { render(): Render[".md"] };
+};
+"it": {
 };
 "sessions": {
 "deep_dive_flutter.md": {
@@ -285,21 +312,21 @@ declare module 'astro:content' {
   slug: "deep_dive_flutter";
   body: string;
   collection: "sessions";
-  data: InferEntrySchema<"sessions">
+  data: any
 } & { render(): Render[".md"] };
 "flutter_1.md": {
 	id: "flutter_1.md";
   slug: "flutter_1";
   body: string;
   collection: "sessions";
-  data: InferEntrySchema<"sessions">
+  data: any
 } & { render(): Render[".md"] };
 "flutter_2.md": {
 	id: "flutter_2.md";
   slug: "flutter_2";
   body: string;
   collection: "sessions";
-  data: InferEntrySchema<"sessions">
+  data: any
 } & { render(): Render[".md"] };
 };
 "speakers": {
@@ -308,7 +335,7 @@ declare module 'astro:content' {
   slug: "simone_bonfrate";
   body: string;
   collection: "speakers";
-  data: InferEntrySchema<"speakers">
+  data: any
 } & { render(): Render[".md"] };
 };
 "staff": {
@@ -317,62 +344,85 @@ declare module 'astro:content' {
   slug: "anna";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 "laura.md": {
 	id: "laura.md";
   slug: "laura";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 "michela.md": {
 	id: "michela.md";
   slug: "michela";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 "mike.md": {
 	id: "mike.md";
   slug: "mike";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 "paolo.md": {
 	id: "paolo.md";
   slug: "paolo";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 "simone.md": {
 	id: "simone.md";
   slug: "simone";
   body: string;
   collection: "staff";
-  data: InferEntrySchema<"staff">
+  data: any
 } & { render(): Render[".md"] };
 };
+"testimonials copy": {
+};
 "testimonials": {
-"emilia.md": {
-	id: "emilia.md";
-  slug: "emilia";
+"en/emilia.md": {
+	id: "en/emilia.md";
+  slug: "en/emilia";
   body: string;
   collection: "testimonials";
   data: any
 } & { render(): Render[".md"] };
-"raffaele.md": {
-	id: "raffaele.md";
-  slug: "raffaele";
+"en/raffaele.md": {
+	id: "en/raffaele.md";
+  slug: "en/raffaele";
   body: string;
   collection: "testimonials";
   data: any
 } & { render(): Render[".md"] };
-"vito.md": {
-	id: "vito.md";
-  slug: "vito";
+"en/vito.md": {
+	id: "en/vito.md";
+  slug: "en/vito";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"it/emilia.md": {
+	id: "it/emilia.md";
+  slug: "it/emilia";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"it/raffaele.md": {
+	id: "it/raffaele.md";
+  slug: "it/raffaele";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"it/vito.md": {
+	id: "it/vito.md";
+  slug: "it/vito";
   body: string;
   collection: "testimonials";
   data: any
@@ -387,5 +437,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = typeof import("../src/content/config");
+	type ContentConfig = never;
 }

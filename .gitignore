@@ -8,3 +8,4 @@ copy/template.txt
 dev-dist/**
 copy/
 external/
+.firebase/
