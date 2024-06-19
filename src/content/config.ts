@@ -64,6 +64,7 @@ const staffCollection = defineCollection({
 const testimonals = defineCollection({
     type: 'content', // v2.5.0 and later
     schema: z.object({
+        lang: z.string(),
         name: z.string(),
     }),
 });
@@ -71,6 +72,7 @@ const testimonals = defineCollection({
 const callToActions = defineCollection({
     type: 'content', // v2.5.0 and later
     schema: z.object({
+        lang: z.string(),
         order: z.number(),
         title: z.string(),
         url: z.string(),

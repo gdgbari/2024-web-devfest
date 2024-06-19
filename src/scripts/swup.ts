@@ -1,18 +1,9 @@
 import Swup from 'swup';
 import { initRoleLinkElement as initRoleLinkElements } from './links_helper';
 
-const w = window as any;
 const swup = new Swup({ cache: false });
 
 const pageHandle = () => {
-    w.resetNavbar();
-    
-    if (swup.currentPageUrl === '/') {
-        w.intitializeNav();
-    } else {
-        w.navSetWhiteBg();
-    }
-
     initRoleLinkElements(swup);
 }
 

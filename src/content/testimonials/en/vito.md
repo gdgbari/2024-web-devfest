@@ -1,5 +1,6 @@
 ---
 name: Vito
+lang: en
 ---
 Spending an entire day with half a thousand tech enthusiasts, discovering new tools for your projects and getting inspired talk after talk, all without opening your wallet (or digital wallet).
 

@@ -10,21 +10,24 @@ import Jumbo from "../components/Home/Jumbo.astro";
 import LastYearRecap from "../components/Home/LastYearRecap.astro";
 
 const ctas = await getCollection("call_to_actions");
+const currentLocale = "it";
+
 ---
 
 <!-- Below is your "component template." It's just HTML, but with
      some magic sprinkled in to help you build great templates. -->
-<html lang="it" class="scroll-smooth flex flex-col min-h-screen">
+<html lang={currentLocale} class="scroll-smooth flex flex-col min-h-screen">
   <PageHead />
 
   <body class="flex flex-col flex-1">
-    <Navbar currentLocale="it" transparentMode={true} />
 
     <main
       id="swup"
       class="main-content transition-fade flex flex-col"
       data-swup="0"
     >
+    <Navbar transparentMode={true} currentLocale={currentLocale} />
+
       <Jumbo>
         <h1 slot="title" class="text-6xl font-medium mb-4">
           Devfest Bari 2024
@@ -58,7 +61,7 @@ const ctas = await getCollection("call_to_actions");
         </p>
       </BlueSection>
 
-      <LastYearRecap>
+      <LastYearRecap currentLocale={currentLocale}>
         <p class="text-5xl font-bold mb-4" slot="title">
           Com’è andata la scorsa devfest?
         </p>
@@ -87,6 +90,7 @@ const ctas = await getCollection("call_to_actions");
 
       {
         ctas
+          .filter((cta) => cta.data.lang === currentLocale)
           .sort((a, b) => a.data.order - b.data.order)
           .map((cta) => <CallToAction cta={cta} />)
       }

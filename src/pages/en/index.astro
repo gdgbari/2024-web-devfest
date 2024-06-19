@@ -59,7 +59,7 @@ const currentLocale = "en";
         </p>
       </BlueSection>
 
-      <LastYearRecap>
+      <LastYearRecap currentLocale={currentLocale}>
         <p class="text-5xl font-bold mb-4" slot="title">
           How was the last DevFest?
         </p>
@@ -88,6 +88,7 @@ const currentLocale = "en";
 
       {
         ctas
+          .filter((cta) => cta.data.lang === currentLocale)
           .sort((a, b) => a.data.order - b.data.order)
           .map((cta) => <CallToAction cta={cta} />)
       }

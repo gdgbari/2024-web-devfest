@@ -2,6 +2,14 @@
 import { getCollection } from "astro:content";
 import Testimonial from "./Testimonial.astro";
 const testimonials = await getCollection("testimonials");
+
+type Props = {
+  currentLocale: string;
+}
+
+const {currentLocale} = Astro.props;
+
+console.log("LOCALE ==>",currentLocale);
 ---
 
 <div class="flex flex-col py-8 text-black">
@@ -15,7 +23,9 @@ const testimonials = await getCollection("testimonials");
     <div class="flex-1 md:w-64 flex flex-col justify-center text-center">
       <slot name="slot-subtitle" />
       {
-        testimonials.map((t, i) => (
+        testimonials
+        .filter(t => t.data.lang == currentLocale)
+        .map((t, i) => (
           <Testimonial testimodial={t} lft={i % 2 == 0} />
         ))
       }
