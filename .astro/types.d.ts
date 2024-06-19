@@ -184,9 +184,7 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"call_to_actions copy": {
-};
-"call_to_actions": {
+		"call_to_actions": {
 "en/partner.md": {
 	id: "en/partner.md";
   slug: "en/partner";
@@ -229,8 +227,6 @@ declare module 'astro:content' {
   collection: "call_to_actions";
   data: InferEntrySchema<"call_to_actions">
 } & { render(): Render[".md"] };
-};
-"en": {
 };
 "externals": {
 "ass_coach.md": {
@@ -303,8 +299,6 @@ declare module 'astro:content' {
   collection: "externals";
   data: InferEntrySchema<"externals">
 } & { render(): Render[".md"] };
-};
-"it": {
 };
 "sessions": {
 "deep_dive_flutter.md": {
@@ -381,8 +375,6 @@ declare module 'astro:content' {
   collection: "staff";
   data: InferEntrySchema<"staff">
 } & { render(): Render[".md"] };
-};
-"testimonials copy": {
 };
 "testimonials": {
 "en/emilia.md": {
