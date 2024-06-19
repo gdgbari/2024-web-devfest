@@ -12,7 +12,7 @@ const { title, url, buttonText } = cta.data;
 ---
 
 <div class="flex flex-col py-8 text-black">
-  <div id={slug} class="relative top-[-90px] h-30 w-full"></div>
+  <div id={slug.split("/")[1]} class="relative top-[-90px] h-30 w-full"></div>
   <div class="flex max-w-6xl lg:w-4/5 w-full m-auto px-4">
     <div class="flex-1 md:w-64 flex flex-col justify-center text-center">
       <p class="text-5xl font-bold mb-4">{title}</p>
