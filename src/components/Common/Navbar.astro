@@ -16,17 +16,22 @@ const localeRouting = {
   it: "en",
 };
 
-const homeUrl = currentLocale == 'en' ? '/en' : '/';
+console.log(Astro.url);
+
+const homeUrl = Astro.currentLocale == "en" ? "/en" : `/`;
+
+const urlInNextLang =
+  Astro.currentLocale == "en"
+    ? Astro.url.pathname.replace("/en", "")
+    : "/en" + Astro.url.pathname;
 
 const links = [
   { link: homeUrl, name: "Home" },
   { link: "#speaker", name: "Call For Speaker" },
   { link: "#sponsor", name: "Sponsorship" },
   { link: "#partner", name: "Partnership" },
-  ...Object.keys(localeRouting).filter((l) => l == currentLocale ) .map((l) => ({
-    link: `/${localeRouting[l]}`,
-    name: localeRouting[l].toUpperCase(),
-  })),
+  { link: `/${Astro.currentLocale}/faq`, name: "FAQ" },
+  { link: urlInNextLang, name: Astro.currentLocale == "en" ? "IT" : "EN" },
 ];
 
 const dateLocalized = {
@@ -34,6 +39,7 @@ const dateLocalized = {
   it: "26 Ottobre 2024, Bari",
 };
 ---
+
 <header>
   <nav
     class={`${
@@ -93,14 +99,16 @@ const dateLocalized = {
       <div
         class="absolute ease-in duration-100 top-0 bottom-0 left-[-16rem] w-64 bg-white flex flex-col justify-start items-stretch"
       >
-        <a href={homeUrl} class="flex justify-center px-2 pt-3">
-          <Image src={imgLogo} alt={DEVFEST_NAME} class="max-h-14 w-auto h-full" />
+        <a href={urlInNextLang} class="flex justify-center px-2 pt-3">
+          <Image
+            src={imgLogo}
+            alt={DEVFEST_NAME}
+            class="max-h-14 w-auto h-full"
+          />
         </a>
 
         <div class="my-4 pl-3 flex flex-col">
-          <p class="text-2xl font-medium">{
-            dateLocalized[currentLocale]
-            }</p>
+          <p class="text-2xl font-medium">{dateLocalized[currentLocale]}</p>
         </div>
 
         <div class="flex flex-col items-stretch">
