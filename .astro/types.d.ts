@@ -143,13 +143,6 @@ declare module 'astro:content' {
   collection: "call_to_actions";
   data: InferEntrySchema<"call_to_actions">
 } & { render(): Render[".md"] };
-"en/speaker.md": {
-	id: "en/speaker.md";
-  slug: "en/speaker";
-  body: string;
-  collection: "call_to_actions";
-  data: InferEntrySchema<"call_to_actions">
-} & { render(): Render[".md"] };
 "en/sponsor.md": {
 	id: "en/sponsor.md";
   slug: "en/sponsor";
@@ -160,13 +153,6 @@ declare module 'astro:content' {
 "it/partner.md": {
 	id: "it/partner.md";
   slug: "it/partner";
-  body: string;
-  collection: "call_to_actions";
-  data: InferEntrySchema<"call_to_actions">
-} & { render(): Render[".md"] };
-"it/speaker.md": {
-	id: "it/speaker.md";
-  slug: "it/speaker";
   body: string;
   collection: "call_to_actions";
   data: InferEntrySchema<"call_to_actions">

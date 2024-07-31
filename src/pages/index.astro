@@ -11,7 +11,6 @@ import LastYearRecap from "../components/Home/LastYearRecap.astro";
 
 const ctas = await getCollection("call_to_actions");
 const currentLocale = "it";
-
 ---
 
 <!-- Below is your "component template." It's just HTML, but with
@@ -20,13 +19,12 @@ const currentLocale = "it";
   <PageHead />
 
   <body class="flex flex-col flex-1">
-
     <main
       id="swup"
       class="main-content transition-fade flex flex-col"
       data-swup="0"
     >
-    <Navbar transparentMode={true} currentLocale={currentLocale} />
+      <Navbar transparentMode={true} currentLocale={currentLocale} />
 
       <Jumbo>
         <h1 slot="title" class="text-6xl font-medium mb-4">
@@ -36,8 +34,8 @@ const currentLocale = "it";
         <a
           slot="cta"
           class="mt-auto text-center py-3 px-8 bg-primary hover:bg-primary-hover text-white ease-in duration-100"
-          href="#speaker"
-          }>Call For Speaker</a
+          href="https://gdg.community.dev/e/mnr6ek/"
+          }>Biglietti</a
         >
       </Jumbo>
 

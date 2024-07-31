@@ -3,7 +3,7 @@ export class WebsiteConfig {
     |              GENERAL SETTINGS              |  
     --------------------------------------------*/
     
-    public static readonly DEVFEST_NAME: string = 'Devfest Bari 2023';
+    public static readonly DEVFEST_NAME: string = 'Devfest Bari 2024';
     public static readonly DEVFEST_LOGO_LIGHT: string = '/assets/images/logo.png';
     public static readonly DEVFEST_LOGO_DARK: string = '/assets/images/logo.png';
     public static readonly DEVFEST_EVENT_LINK: string = 'https://gdg.community.dev/events/details/google-gdg-bari-presents-devfest-bari-2023/';
