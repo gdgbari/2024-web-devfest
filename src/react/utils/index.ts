@@ -1,26 +1,29 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { WebsiteConfig } from "../../config";
-import { useEffect, useState } from "react";
-
+import {
+    getFunctions,
+    httpsCallable,
+  } from "firebase/functions";
 
 export const firebaseApp = initializeApp(WebsiteConfig.FIREBASE_CONFIG);
 export const firebase = {
+    functions: getFunctions(firebaseApp),
     auth: getAuth(firebaseApp),
 }
 
-export const useFirebaseUserInfo = () => {
-    const [hasLoaded, setHasLoaded] = useState(false)
-    useEffect(() => {
-        onAuthStateChanged(firebase.auth, (user) => {
-            setUser(user)
-            setHasLoaded(true)
-        })
-    }, [])
-    const [user, setUser] = useState(firebase.auth.currentUser)
-    return { user, hasLoaded }
+export const createQuiz = async (data: any) => {
+    const func = httpsCallable(firebase.functions, "createQuiz")
+    const gotData = await func(data).then((result) => {
+        return result.data
+    })
+    const finalData = JSON.parse(gotData as string)
+    if (finalData.error){
+        throw finalData.error
+    }
+    return finalData
 }
 
 //By https://emailregex.com/
@@ -30,7 +33,7 @@ export const isEmailValid = (email: string) => {
     return emailRegex.test(email)
 }
 
-
-
-
+export function capitalizeFirstLetter(string:string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 

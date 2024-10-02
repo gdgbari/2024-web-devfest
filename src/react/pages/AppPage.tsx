@@ -1,50 +1,46 @@
-import { Button } from "react-daisyui"
 import { AppMain } from "../AppMain"
-import { firebase, useFirebaseUserInfo } from "../utils"
+import { firebase } from "../utils"
 import { useEffect } from "react"
-import { sendEmailVerification } from "firebase/auth"
-import { showNotification } from "@mantine/notifications"
-
+import { useFirebaseUserInfo } from "../utils/query";
+import { AppBar } from "../components/AppBar";
+import { UserInfoPage } from "./app/UserInfoPage";
+import { EmailVerificationPage } from "./app/EmailVerificationPage";
+import { useAppRouter } from "../utils/store";
+import { QuizList } from "./app/QuizList";
+import { Container } from "@mantine/core";
+import { QuizAdd } from "./app/QuizAdd";
 
 
 export const AppPage = () => {
 
     const { user, hasLoaded } = useFirebaseUserInfo()
+    const { currentPage, navigate } = useAppRouter()
+    const emailVerified = firebase.auth.currentUser?.emailVerified ?? false
+
     useEffect(() => {
-        if(user == null && hasLoaded) {
-            location.href = "/login"
+        if (hasLoaded){
+            if (user == null) {
+                location.href = "/login"
+            }
+            if (user && !emailVerified && currentPage !== "verify-email") {
+                navigate("verify-email")
+            }
         }
-    }, [user])
+    }, [user, hasLoaded])
 
-    const emailVerified = firebase.auth.currentUser?.emailVerified??false
-
-    return <>
-        {user?<AppMain>
-            Welcome to your app menù!
-            <b>You are {firebase.auth.currentUser?.displayName} with {firebase.auth.currentUser?.email}</b>
-            <b>email verified: {emailVerified?"yes":"no"}</b>
-            {!emailVerified && <Button onClick={() => {
-                sendEmailVerification(user).then(() => {
-                    showNotification({
-                        title: "Verification email sent",
-                        message: "Check your inbox",
-                        color: "blue"
-                    })
-                }).catch((error) => {
-                    showNotification({
-                        title: `Error sending verification email [${error.code}]`,
-                        message: error.message,
-                        color: "red"
-                    })
-                })
-            }}>
-                Resend verification email
-            </Button>}
-            <b>UID: {firebase.auth.currentUser?.uid}</b>
-            <Button onClick={() => {
-                firebase.auth.signOut()
-            }}>Logout</Button>
-            
-        </AppMain>:<AppMain>Loading...</AppMain>}
-    </>
+    return <div className="flex flex-col h-full w-full justify-start" style={{minHeight: "100vh"}} >
+        <AppBar></AppBar>
+        <div className="text-center mx-5">
+            <AppMain>
+                <Container size="xl" mt="xl">
+                    {
+                        currentPage == "verify-email"? <EmailVerificationPage user={user!}></EmailVerificationPage> :
+                        currentPage == "app" ? <QuizList /> :
+                        currentPage == "add-quiz" ? <QuizAdd /> :
+                        currentPage == "profile"? <UserInfoPage user={user!}></UserInfoPage> : "Loading..."
+                    }
+                </Container>
+            </AppMain>
+        </div>
+    </div>
 }

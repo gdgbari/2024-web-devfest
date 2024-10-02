@@ -4,7 +4,8 @@ import { useForm } from "@mantine/form"
 import { WebsiteConfig } from "../../config";
 import { useTranslations } from "../../i18n/utils";
 import { notifications, showNotification } from "@mantine/notifications";
-import { firebase, isEmailValid, useFirebaseUserInfo } from "../utils";
+import { firebase, isEmailValid } from "../utils";
+import { useFirebaseUserInfo } from "../utils/query";
 import { useEffect, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -88,6 +89,7 @@ export const LoginPage = () => {
                         <p className="text-2xl md:text-3xl font-semibold mt-5">
                             {
                             WebsiteConfig.EVENT_START.toLocaleDateString("en", {
+                                timeZone: WebsiteConfig.EVENT_TIMEZONE,
                                 day: "numeric",
                                 month: "long",
                                 year: "numeric",

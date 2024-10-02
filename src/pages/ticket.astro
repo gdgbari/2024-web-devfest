@@ -8,13 +8,11 @@ const lang = "it"
 const t = useTranslations(lang);
 ---
 
-<!-- Below is your "component template." It's just HTML, but with
-     some magic sprinkled in to help you build great templates. -->
 <html lang={lang} class="scroll-smooth flex flex-col min-h-screen multicolored-bg">
   <PageHead />
-  <body class="flex flex-col flex-1" style="width: 100vw; height:100vh">
+  <body class="flex flex-col flex-1">
 
-    <main class="flex flex-col justify-center items-center" style="width: 100vw; height:100vh">
+    <main class="flex flex-col justify-center items-center" style="min-width: 100vw; min-height:100vh">
         <script>
 import { WebsiteConfig } from "../config"
 
@@ -34,6 +32,7 @@ import { WebsiteConfig } from "../config"
             <p class="text-3xl md:text-4xl font-semibold mt-5">
                 {
                 WebsiteConfig.EVENT_START.toLocaleDateString(lang, {
+                    timeZone: WebsiteConfig.EVENT_TIMEZONE,
                     day: "numeric",
                     month: "long",
                     year: "numeric",
