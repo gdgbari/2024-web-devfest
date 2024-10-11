@@ -158,6 +158,27 @@ declare module 'astro:content' {
   collection: "externals";
   data: InferEntrySchema<"externals">
 } & { render(): Render[".md"] };
+"assocopro.md": {
+	id: "assocopro.md";
+  slug: "assocopro";
+  body: string;
+  collection: "externals";
+  data: InferEntrySchema<"externals">
+} & { render(): Render[".md"] };
+"aup.md": {
+	id: "aup.md";
+  slug: "aup";
+  body: string;
+  collection: "externals";
+  data: InferEntrySchema<"externals">
+} & { render(): Render[".md"] };
+"codemotion.md": {
+	id: "codemotion.md";
+  slug: "codemotion";
+  body: string;
+  collection: "externals";
+  data: InferEntrySchema<"externals">
+} & { render(): Render[".md"] };
 "google.md": {
 	id: "google.md";
   slug: "google";
@@ -335,5 +356,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../../src/content/config.js");
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth"
 import { useEffect, useState } from "react"
-import { firebase } from "."
+import { firebase, getQuizList, getUserProfileById } from "."
+import { useQuery } from "@tanstack/react-query"
 
 
 export const useFirebaseUserInfo = () => {
@@ -13,4 +14,19 @@ export const useFirebaseUserInfo = () => {
     }, [])
     const [user, setUser] = useState(firebase.auth.currentUser)
     return { user, hasLoaded }
+}
+
+
+export const useQuizes = () => {
+    return useQuery({
+        queryKey: ["quizes"],
+        queryFn: getQuizList
+    })
+}
+
+export const useUserProfile = (uid: string) => {
+    return useQuery({
+        queryKey: ["user-profile", uid],
+        queryFn: () => getUserProfileById(uid)
+    })
 }
