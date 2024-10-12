@@ -18,6 +18,28 @@ export const firebase = {
     database: getDatabase(firebaseApp)
 }
 
+
+export const durationToString = (duration: Date): string => {
+    let result = [] as string[]
+    if (duration.getUTCHours() > 0) {
+        result.push(`${duration.getUTCHours()} h`)
+    }
+    if (duration.getUTCMinutes() > 0) {
+        result.push(`${duration.getUTCMinutes()} m`)
+    }
+    if (duration.getUTCSeconds() > 0) {
+        result.push(`${duration.getUTCSeconds()} s`)
+    }
+    if (result.length === 0) result.push(`0 s`)
+    return result.join(", ")
+}
+
+export const secondDurationToString = (duration: number): string => {
+    let date = new Date(0)
+    date.setSeconds(duration)
+    return durationToString(date)
+}
+
 export const createQuiz = async (data: any) => {
     const func = httpsCallable(firebase.functions, "createQuiz")
     const gotData = await func(data).then((result) => {
@@ -49,12 +71,35 @@ type LeaderBoardData = {
     }
 }
 
+export const QUIZ_TYPES = ["talk", "sponsor", "special", "hidden", "custom"] as const
+
+export type QuizType = typeof QUIZ_TYPES[number]
+
 export type Quiz = {
-    quizId: string;
+    quizId: string,
+    creatorUid: string,
+    isOpen: boolean,
+    maxScore: string,
+    questionList: Question[],
     title: string,
-    type: "talk" | "sponsor" | "special" | "hidden",
+    timerDuration: number,
+    talkId: string,
+    sponsorId: string,
+    type: QuizType,
 }
 
+export type Question = {
+    questionId: string,
+    text: string,
+    correctAnswer: string|null,
+    value: number|null,
+    answerList: Answer[],
+}
+
+export type Answer = {
+    id: string,
+    text: string,
+}
 export type UserProfile = {
     userId: string,
     nickname: string,
@@ -62,10 +107,10 @@ export type UserProfile = {
     name: string,
     surname: string,
     group: {
-        groupId:string,
+        groupId: string,
         name: string,
-        imageUrl:string,
-        color:string,
+        imageUrl: string,
+        color: string,
     },
     groupId: string,
     position: string,
@@ -116,7 +161,11 @@ export const getQuizList = async () => {
     const { error, data } = JSON.parse(rawData as string);
 
     if (error) {
-        throw data.error;
+        throw {
+            name: error['errorCode'],
+            message: error['details'],
+            stack : '/getQuizList'
+        } as Error;
     }
 
     return JSON.parse(data) as Quiz[];
@@ -163,3 +212,7 @@ export function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export const capitalizeString = (word: string) => {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+  }
